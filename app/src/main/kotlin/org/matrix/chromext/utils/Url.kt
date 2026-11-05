@@ -111,6 +111,9 @@ private val trustedHosts =
 
 fun isChromeXtFrontEnd(url: String?): Boolean {
   if (url == null) return false
+  // Test build only: trust the preview of the front end deployed from the 7heMech fork
+  if (url.equals("https://7hemech.github.io/jingmatrix.github.io/ChromeXt/", ignoreCase = true))
+      return true
   // The host is still matched exactly, which is what grants the page access to GM.ChromeXt; only
   // the one fixed path is compared without regard to case, because the netlify mirror lower cases
   // it to /chromext/ before serving the very same page.
